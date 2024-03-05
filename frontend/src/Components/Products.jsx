@@ -12,6 +12,7 @@ const Products = () => {
     const products = useSelector(store=> store.productReducer.products)
     const loading = useSelector(store=> store.productReducer.isLoading)
     const [order, setOrder] = useState("")
+    const [filter, setFilter] = useState("")
 
     useEffect(()=> {
         dispatch(getProducts())
@@ -24,12 +25,16 @@ const Products = () => {
         else if(order=='desc'){
             return b.price - a.price
         }
-    })
+    }).filter(item=> filter == "" ? item : item.category == filter)
+
+    console.log(sortedData);
+
+    console.log(filter);
 
   return (
     <>
     <div>
-        <InputForm order = {order} setOrder={setOrder}/>
+        <InputForm order = {order} setOrder={setOrder} setFilter={setFilter}/>
     </div>
     {loading && <Loading/>}
     <div style={{ margin:'auto', display: 'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:'50px', marginTop:'20px'}}>

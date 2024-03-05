@@ -1,0 +1,9 @@
+input, select{
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid rgb(218, 217, 215);
+}
+
+button{
+    cursor: pointer;
+}

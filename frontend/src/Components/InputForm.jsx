@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputForm = ({setOrder}) => {
+const InputForm = ({setOrder, setFilter}) => {
   return (
     <div>
        <div style={{ margin:'auto', marginTop:'5px', display:'flex', justifyContent:'space-around', width:'35%', alignItems:'center'}}>
@@ -14,7 +14,7 @@ const InputForm = ({setOrder}) => {
         <label>High To Low</label>
         </div>
         <div>
-        <select style={{height:'30px'}}>
+        <select onChange={(e)=> setFilter(e.target.value)} style={{height:'30px'}}>
             <option value="">Filter By Category</option>
             <option value="accessories">Accessories</option>
             <option value="jewelery">Jewelery</option>
