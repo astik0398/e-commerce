@@ -1,0 +1,22 @@
+.productcard-container{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; text-align:left; border-radius:15px;
+}
+
+.product-image{
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.wishlist{
+    cursor: pointer;
+}
+
+.cart-button{
+    height: 35px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
