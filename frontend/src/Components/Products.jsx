@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../Redux/productReducer/action'
 import { store } from '../Redux/store'
@@ -11,19 +11,29 @@ const Products = () => {
     const dispatch = useDispatch()
     const products = useSelector(store=> store.productReducer.products)
     const loading = useSelector(store=> store.productReducer.isLoading)
+    const [order, setOrder] = useState("")
 
     useEffect(()=> {
         dispatch(getProducts())
     }, [])
 
+    const sortedData = products.sort((a,b)=> {
+        if(order == 'asc'){
+            return a.price - b.price
+        }
+        else if(order=='desc'){
+            return b.price - a.price
+        }
+    })
+
   return (
     <>
     <div>
-        <InputForm/>
+        <InputForm order = {order} setOrder={setOrder}/>
     </div>
     {loading && <Loading/>}
     <div style={{ margin:'auto', display: 'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:'50px', marginTop:'20px'}}>
-        {products.map((item)=> {
+        {sortedData.map((item)=> {
             return <ProductCard item = {item}/>
         })}
     </div>
